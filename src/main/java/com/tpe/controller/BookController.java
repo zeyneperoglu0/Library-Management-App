@@ -130,5 +130,18 @@ public class BookController {
         return ResponseEntity.ok(response);
     }
 
+    @GetMapping("/{bookId}/add-to-owner/{ownerId}")
+    public ResponseEntity<Response<String>> addBookToOwner(@PathVariable Long bookId, @PathVariable Long ownerId){
+        bookService.addBookToOwner(bookId,ownerId);
+        Response<String> response = new Response<>(
+                true,
+                "Book  added to owner successfully "
+        );
+    return ResponseEntity.ok(response);
+    }
+
+
+
+
 
 }

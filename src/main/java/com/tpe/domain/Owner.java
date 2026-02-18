@@ -7,6 +7,8 @@ import lombok.*;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -39,8 +41,12 @@ private String email;
     @Setter(AccessLevel.NONE)
     private LocalDateTime registirationDate=LocalDateTime.now();
 
+@OneToMany(mappedBy = "owner",cascade = CascadeType.ALL)
+private List<Book> books = new ArrayList<>();
 
-
-
+public void adBook(Book book){
+    books.add(book);
+    book.setOwner(this);
+}
 
 }

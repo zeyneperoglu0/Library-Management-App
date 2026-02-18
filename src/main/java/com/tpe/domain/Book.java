@@ -1,6 +1,7 @@
 package com.tpe.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -35,4 +36,9 @@ private String author;
 @JsonFormat(shape = JsonFormat.Shape.STRING ,pattern = "yyyy-MM-dd")
  private LocalDate publicationDate;
 
+@ManyToOne
+ @JoinColumn(name = "owner_id")
+ @ToString.Exclude
+ @JsonIgnore
+ private Owner owner;
 }
